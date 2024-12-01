@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Staff Page{% endblock title %}
+
+{% block contents %}
+<div class="row my-4 justify-content-center" style="position: relative; right:66px">
+  <div class="col-md-4"></div>
+  <div class="col-md-6">
+      <table class="table bg-white">
+          <thead class="bg-info text-white">
+              <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Telepon</th>
+                  <th scope="col">Email</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th scope="row"><a class="btn btn-info btn-sm" href="#">View</a></th>
+                  <td>John Doe</td>
+                  <td>(555) 123-4567</td>
+                  <td>johndoe@example.com</td>
+              </tr>
+              <tr>
+                  <th scope="row"><a class="btn btn-info btn-sm" href="#">View</a></th>
+                  <td>Jane Smith</td>
+                  <td>(555) 987-6543</td>
+                  <td>janesmith@example.com</td>
+              </tr>
+              <tr>
+                  <th scope="row"><a class="btn btn-info btn-sm" href="#">View</a></th>
+                  <td>Robert Brown</td>
+                  <td>(555) 555-1234</td>
+                  <td>robertbrown@example.com</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+{% endblock contents %}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Orders Page{% endblock title %}
+
+{% block contents %}
+<div class="container">
+  <div class="row my-4">
+      <div class="col-md-4"></div>
+      <div class="col-md-8 ml-auto">
+          <table class="table bg-white">
+              <thead class="bg-info text-white">
+                  <tr>
+                      <th scope="col">Produk</th>
+                      <th scope="col">Kategori</th>
+                      <th scope="col">Kuantitas</th>
+                      <th scope="col">Ordered by</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Product 1</td>
+                      <td>Category 1</td>
+                      <td>100</td>
+                      <td>Customer 1</td>
+                  </tr>
+                  <tr>
+                      <td>Product 2</td>
+                      <td>Category 2</td>
+                      <td>200</td>
+                      <td>Customer 2</td>
+                  </tr>
+                  <tr>
+                      <td>Product 3</td>
+                      <td>Category 3</td>
+                      <td>150</td>
+                      <td>Customer 3</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+{% endblock contents %}
+

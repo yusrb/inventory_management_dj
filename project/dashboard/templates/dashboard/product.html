@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Products Page{% endblock title %}
+
+{% block contents %}
+<div class="container">
+    <div class="row justify-content-center my-4">
+        <div class="col-md-4">
+            <div class="card card-body">
+                <h5>Add New Products</h5>
+                <hr>
+                <form method="POST">
+                    <input class="form-control mb-3" type="text" placeholder="Product Name">
+                    <input class="form-control mb-3" type="text" placeholder="Category">
+                    <input class="form-control mb-3" type="number" placeholder="Quantity">
+                    <input class="btn btn-success btn-block" type="submit" value="Add">
+                </form>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-info text-white">
+                    <tr>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Kuantitas</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Product 1</td>
+                        <td>Category 1</td>
+                        <td>100</td>
+                        <td>
+                            <a class="btn btn-info btn-sm mr-2" href="#">Edit</a>
+                            <a class="btn btn-danger btn-sm ml-2" href="#">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Product 2</td>
+                        <td>Category 2</td>
+                        <td>200</td>
+                        <td>
+                            <a class="btn btn-info btn-sm mr-2" href="#">Edit</a>
+                            <a class="btn btn-danger btn-sm ml-2" href="#">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Product 3</td>
+                        <td>Category 3</td>
+                        <td>150</td>
+                        <td>
+                            <a class="btn btn-info btn-sm mr-2" href="#">Edit</a>
+                            <a class="btn btn-danger btn-sm ml-2" href="#">Hapus</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock contents %}
