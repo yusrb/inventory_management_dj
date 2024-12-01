@@ -10,8 +10,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('dashboard.urls' , 'dashboard'), namespace="dashboard")),
 
-    path('register/' , user_view.register , name="user_register"),
     path('profile/', user_view.profile, name="user_profile"),
+    path('profile/update', user_view.profile_update, name="user_profile_update"),
+
+    path('register/' , user_view.register , name="user_register"),
     path('', auth_views.LoginView.as_view(template_name="user/login.html", ), name="user_login"),
     path('logout/', auth_views.LogoutView.as_view(next_page='user_logout_success'), name='user_logout'),
     path('logout_success/', TemplateView.as_view(template_name='user/logout.html'), name='user_logout_success'),

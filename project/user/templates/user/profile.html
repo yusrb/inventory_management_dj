@@ -16,7 +16,7 @@
                   <table class="table table-borderless">
                       <thead>
                           <span class="h4">Profile Information</span>
-                          <a class="btn btn-primary btn-sm float-right" href="#">Edit</a>
+                          <a class="btn btn-primary btn-sm float-right" href="{% url 'user_profile_update' %}">Edit</a>
                           <hr>
                       </thead>
                       <tbody>
@@ -30,17 +30,25 @@
                           </tr>
                           <tr>
                               <th scope="row">Phone</th>
-                              <td>{{request.user.profile.telp}}</td>
+                              {% if request.user.profile.telp %}
+                                <td>{{request.user.profile.telp}}</td>
+                              {% else %}
+                              <td>Belum Diisi</td>
+                              {% endif %}
                           </tr>
                           <tr>
                               <th scope="row">Address</th>
-                              <td>{{request.user.profile.alamat}}</td>
+                              {% if request.user.profile.alamat %}
+                                <td>{{request.user.profile.alamat}}</td>
+                              {% else %}
+                                <td>Belum Diisi</td>
+                              {% endif %}
                           </tr>
                       </tbody>
                   </table>
               </div>
               <div class="col-md-4">
-                  <img class="img-thumbnail" src="{{request.user.profile.foto.url}}" alt="profile-image">
+                  <img class="img-thumbnail" src="{{request.user.profile.foto.url}}" alt="profile-image" style="width: 300px;">
               </div>
           </div>
       </div>
