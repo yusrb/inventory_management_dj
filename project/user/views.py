@@ -6,12 +6,15 @@ from .forms import (
   UserUpdateForm,
   ProfileUpdateForm,
 )
+from django.contrib import messages
 
 def register(request):
   if request.method == 'POST':
     form = CreateUserForm(request.POST)
     if form.is_valid():
       form.save()
+      nama_user = form.cleaned_data.get('username')
+      messages.success(request, f'Akun untuk {nama_user} berhasil ditambahkan!!. Lanjut ke Login')
       return redirect('user_login')
     else:
       messages.error(request, 'Ada kesalahan dalam formulir.')

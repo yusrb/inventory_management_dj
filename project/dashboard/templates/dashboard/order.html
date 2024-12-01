@@ -8,35 +8,27 @@
 <div class="container">
   <div class="row my-4">
       <div class="col-md-4"></div>
-      <div class="col-md-8 ml-auto">
+      <div class="ml-auto" style="position:relative; left:80px; width: 820px;">
           <table class="table bg-white">
-              <thead class="bg-info text-white">
+              <thead class="bg-primary text-white">
                   <tr>
                       <th scope="col">Produk</th>
                       <th scope="col">Kategori</th>
                       <th scope="col">Kuantitas</th>
-                      <th scope="col">Ordered by</th>
+                      <th scope="col">Order by</th>
+                      <th scope="col">Date</th>
                   </tr>
               </thead>
               <tbody>
+                {% for pesanan in pesanans  %}
                   <tr>
-                      <td>Product 1</td>
-                      <td>Category 1</td>
-                      <td>100</td>
-                      <td>Customer 1</td>
+                      <td>{{pesanan.produk}}</td>
+                      <td>{{pesanan.produk.kategori}}</td>
+                      <td>{{pesanan.pemesanan_kuantitas}}</td>
+                      <td>{{pesanan.staff.username}}</td>
+                      <td>{{ pesanan.tgl_pemesanan|date:"d, F Y" }}</td>
                   </tr>
-                  <tr>
-                      <td>Product 2</td>
-                      <td>Category 2</td>
-                      <td>200</td>
-                      <td>Customer 2</td>
-                  </tr>
-                  <tr>
-                      <td>Product 3</td>
-                      <td>Category 3</td>
-                      <td>150</td>
-                      <td>Customer 3</td>
-                  </tr>
+                  {% endfor %}
               </tbody>
           </table>
       </div>

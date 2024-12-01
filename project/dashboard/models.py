@@ -31,7 +31,7 @@ class Pemesanan(models.Model):
 
   class Meta:
     verbose_name = "Pemesanan"
-    verbose_name_plural = "Staff Pemesanan"
+    verbose_name_plural = "Pemesanan"
 
   def __str__(self):
     return f"{self.produk} diorder oleh {self.staff.username}"

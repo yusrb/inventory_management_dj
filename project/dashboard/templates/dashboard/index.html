@@ -14,10 +14,10 @@
                   var myChart1 = new Chart(ctx, {
                       type: 'pie',
                       data: {
-                          labels: ['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6'],
+                          labels: [{% for pesanan in all_pesanan %} '{{pesanan.produk.nama}}', {% endfor %}],
                           datasets: [{
-                              label: 'Number of Products',
-                              data: [12, 19, 3, 5, 2, 3],
+                              label: 'Orders',
+                              data: [{% for pesanan in all_pesanan %} '{{pesanan.pemesanan_kuantitas}}', {% endfor %}],
                               backgroundColor: [
                                   'rgba(255, 99, 132, 1)',
                                   'rgba(54, 162, 235, 1)',
@@ -54,10 +54,10 @@
                   var myChart = new Chart(ctx, {
                       type: 'bar',
                       data: {
-                          labels: ['Order 1', 'Order 2', 'Order 3', 'Order 4', 'Order 5'],
+                          labels: [{% for produk in produks %} '{{produk.nama}}', {% endfor %}],
                           datasets: [{
-                              label: 'Orders',
-                              data: [15, 25, 8, 12, 10],
+                              label: 'Products',
+                              data: [{% for produk in produks %} {{produk.kuantitas}}, {% endfor %}],
                               backgroundColor: [
                                   'rgba(255, 99, 132, 1)',
                                   'rgba(54, 162, 235, 1)',

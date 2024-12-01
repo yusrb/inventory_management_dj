@@ -1,54 +1,53 @@
+{% load crispy_forms_tags %}
+
 <div>
   <div class="row mt-4 justify-content-center">
-      <div class="col-md-4">
-          <div class="card">
-              <div class="card-header">
-                  Make Request
-              </div>
-              <div class="card-body">
-                  <p>Form has been removed.</p>
-              </div>
-          </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Make Request</div>
+        <div class="card-body">
+          <form action="" method="post">
+            {% csrf_token %}
+            {{pemesanan_form|crispy}}
+
+            <button class="btn btn-primary btn-block" type="submit">Buat Request</button>
+          </form>
+        </div>
       </div>
-      <div class="col-md-5">
-          <div class="card">
-              <div class="card-header">
-                  Orders Records
-              </div>
-              <div class="card-body">
-                  <table class="table bg-white">
-                      <thead class="bg-info text-white">
-                          <tr>
-                              <th scope="col">Product</th>
-                              <th scope="col">Category</th>
-                              <th scope="col">Quantity</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>Product 1</td>
-                              <td>Category 1</td>
-                              <td>5</td>
-                          </tr>
-                          <tr>
-                              <td>Product 2</td>
-                              <td>Category 2</td>
-                              <td>3</td>
-                          </tr>
-                          <tr>
-                              <td>Product 3</td>
-                              <td>Category 3</td>
-                              <td>8</td>
-                          </tr>
-                          <tr>
-                              <td>Product 4</td>
-                              <td>Category 4</td>
-                              <td>2</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
+      {% for message in messages %}
+      {% if message %}
+      <div class="alert alert-{{message.tags}} mt-3">
+          {{message}}
       </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Orders Records</div>
+        <div class="card-body">
+          <table class="table bg-white">
+            <thead class="bg-primary text-white">
+              <tr>
+                <th scope="col">Produk</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Kuantitas</th>
+                <th scope="col">Tanggal</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for pesanan in pesanans  %}
+              <tr>
+                <td>{{pesanan.produk.nama}}</td>
+                <td>{{pesanan.produk.kategori}}</td>
+                <td>{{pesanan.pemesanan_kuantitas}}</td>
+                <td>{{ pesanan.tgl_pemesanan|date:"d, F Y" }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

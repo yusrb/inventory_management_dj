@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Produk Page{% endblock title %}
+
+{% block contents %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="border bg-white p-3">
+        <h3>Edit Item</h3>
+        <hr>
+        <form action="{% url 'dashboard:dashboard_product_update' produk.pk %}" method="post">
+          {% csrf_token %}
+          {{produk_form|crispy}}
+          <input class="btn btn-info" type="submit" value="Edit">
+          <a href="{% url 'dashboard:dashboard_product' %}">
+            <input class="btn btn-secondary" type="button" value="Tidak">
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock contents %}
+

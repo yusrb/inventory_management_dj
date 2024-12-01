@@ -20,5 +20,6 @@ class KategoriAdmin(admin.ModelAdmin):
 @admin.register(Pemesanan)
 class PemesananAdmin(admin.ModelAdmin):
   list_display = ('produk', 'pemesanan_kuantitas', 'staff', 'tgl_pemesanan',)
+  list_filter = ('staff',)
 
 # admin.site.unregister(Group)

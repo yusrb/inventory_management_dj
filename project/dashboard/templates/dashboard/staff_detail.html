@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Staff Page{% endblock title %}
+
+{% block contents %}
+
+{% include 'snippets/topside.html' %}
+<div class="row my-4">
+    <div class="col-md-4"></div>
+    <div class="" style="margin-left: 560px; width: 729px;">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Customer Detail Page
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                            <span class="h4">Profile Information</span>
+                            <a class="btn btn-primary btn-sm float-right" href="{% url 'user_profile_update' %}">Edit</a>
+                            <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td>{{staff.username}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>{{staff.email}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Phone</th>
+                                {% if staff.profile.telp %}
+                                  <td>{{staff.profile.telp}}</td>
+                                {% else %}
+                                <td>Belum Diisi</td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <th scope="row">Address</th>
+                                {% if staff.profile.alamat %}
+                                  <td>{{staff.profile.alamat}}</td>
+                                {% else %}
+                                  <td>Belum Diisi</td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-thumbnail" src="{{staff.profile.foto.url}}" alt="profile-image" style="width: 300px;">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock contents %}
+

@@ -9,33 +9,23 @@
   <div class="col-md-4"></div>
   <div class="col-md-6">
       <table class="table bg-white">
-          <thead class="bg-info text-white">
+          <thead class="bg-primary text-white">
               <tr>
                   <th scope="col"></th>
                   <th scope="col">Nama</th>
-                  <th scope="col">Telepon</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Telepon</th>
               </tr>
           </thead>
           <tbody>
+            {% for staff in staffs %}
               <tr>
-                  <th scope="row"><a class="btn btn-info btn-sm" href="#">View</a></th>
-                  <td>John Doe</td>
-                  <td>(555) 123-4567</td>
-                  <td>johndoe@example.com</td>
+                  <th scope="row"><a class="btn btn-primary btn-sm" href="{% url 'dashboard:dashboard_staff_detail' staff.id %}">View</a></th>
+                  <td>{{staff.username}}</td>
+                  <td>{{staff.email}}</td>
+                  <td>{{staff.profile.telp}}</td>
               </tr>
-              <tr>
-                  <th scope="row"><a class="btn btn-info btn-sm" href="#">View</a></th>
-                  <td>Jane Smith</td>
-                  <td>(555) 987-6543</td>
-                  <td>janesmith@example.com</td>
-              </tr>
-              <tr>
-                  <th scope="row"><a class="btn btn-info btn-sm" href="#">View</a></th>
-                  <td>Robert Brown</td>
-                  <td>(555) 555-1234</td>
-                  <td>robertbrown@example.com</td>
-              </tr>
+              {% endfor %}
           </tbody>
       </table>
   </div>

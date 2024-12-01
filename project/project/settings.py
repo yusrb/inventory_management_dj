@@ -98,6 +98,12 @@ LOGIN_REDIRECT_URL = "dashboard:dashboard_index"
 
 LOGIN_URL = "user_login"
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "byrn.uiy@gmail.com"
+EMAIL_HOST_PASSWORD = "akrx hiry adht qaoo"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
@@ -121,6 +127,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATIF_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = '/media/'
 
