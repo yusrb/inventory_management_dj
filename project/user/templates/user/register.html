@@ -4,27 +4,33 @@
 {% block title %}Register Page{% endblock title %}
 
 {% block contents %}
-
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-md-6 offset-md-3">
-      <div class="border bg-white p-3">
-        <h3>Registrasi Page</h3>
-        <hr />
-        <form action="" method="post">
-          {% csrf_token %} {{ form|crispy }}
-          <input class="btn btn-success" type="submit" value="Registrasi" />
-        </form>
-
-        {% if form.errors %}
-        <ul>
-          {% for field in form %} {% for error in field.errors %}
-          <li>{{ error }}</li>
-          {% endfor %} {% endfor %}
-        </ul>
-        {% endif %}
+<div class="container d-flex justify-content-center align-items-center" style="margin-top: 50px; margin-bottom: 50px;">
+  <div class="card shadow-lg p-5" style="width: 100%; max-width: 500px; border-radius: 15px;">
+    <h2 class="text-center mb-4 fw-bold text-primary">Registrasi</h2>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary mt-4 py-2">Registrasi</button>
       </div>
+    </form>
+    {% if form.errors %}
+    <div class="alert alert-danger mt-4">
+      <ul class="mb-0">
+        {% for field in form %}
+          {% for error in field.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
     </div>
+    {% endif %}
+    <p class="text-center mt-4">
+      Sudah punya akun? 
+      <a href="{% url 'user_login' %}" class="text-decoration-none text-primary fw-bold">
+        Login
+      </a>
+    </p>
   </div>
 </div>
 {% endblock contents %}

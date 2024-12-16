@@ -1,53 +1,74 @@
 {% load crispy_forms_tags %}
 
-<div>
-  <div class="row mt-4 justify-content-center">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">Make Request</div>
-        <div class="card-body">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-lg border-0">
+        <div class="card-header text-white text-center fw-bold" style="background: linear-gradient(to top, #00bcd4, #3f51b5); 
+                    border-bottom: 2px solid #d1d1d1;">
+          Buat Request
+        </div>
+        <div class="card-body p-4">
           <form action="" method="post">
             {% csrf_token %}
-            {{pemesanan_form|crispy}}
-
-            <button class="btn btn-primary btn-block" type="submit">Buat Request</button>
+            {{ pemesanan_form|crispy }}
+            <div class="d-grid">
+              <button class="btn btn-primary btn-lg mt-3" type="submit">
+                Buat Request
+              </button>
+            </div>
           </form>
         </div>
       </div>
       {% for message in messages %}
       {% if message %}
-      <div class="alert alert-{{message.tags}} mt-3">
-          {{message}}
+      <div class="alert alert-{{ message.tags }} mt-3 shadow-sm">
+        {{ message }}
       </div>
       {% endif %}
       {% endfor %}
     </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">Orders Records</div>
-        <div class="card-body">
-          <table class="table bg-white">
-            <thead class="bg-primary text-white">
-              <tr>
-                <th scope="col">Produk</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Kuantitas</th>
-                <th scope="col">Tanggal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for pesanan in pesanans  %}
-              <tr>
-                <td>{{pesanan.produk.nama}}</td>
-                <td>{{pesanan.produk.kategori}}</td>
-                <td>{{pesanan.pemesanan_kuantitas}}</td>
-                <td>{{ pesanan.tgl_pemesanan|date:"d, F Y" }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-header text-white text-center fw-bold" style="background: linear-gradient(to top, #00bcd4, #3f51b5);
+                    border-bottom: 2px solid #d1d1d1;">
+          Riwayat Pesanan
+        </div>
+        <div class="p-0" style="color: black">
+          <div class="table-responsive p-0">
+            <table class="table table-striped m-0">
+              <thead class="bg-primary text-white text-center">
+                <tr>
+                  <th scope="col">Produk</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Kuantitas</th>
+                  <th scope="col">Tanggal</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if pesanans %}
+                {% for pesanan in pesanans %}
+                <tr class="text-center">
+                  <td>{{ pesanan.produk.nama }}</td>
+                  <td>{{ pesanan.produk.kategori }}</td>
+                  <td>{{ pesanan.pemesanan_kuantitas }}</td>
+                  <td>{{ pesanan.tgl_pemesanan|date:"d, F Y" }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="4" class="text-center text-muted">
+                    Belum ada data pesanan.
+                  </td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
+    
   </div>
 </div>

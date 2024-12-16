@@ -1,27 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %}Konfirmasi Hapus Page{% endblock title %}
+{% block title %}Konfirmasi Hapus{% endblock title %}
 
 {% block contents %}
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-md-6 offset-md-3">
-      <div class="border bg-white p-3">
-        <h3>Konfirmasi Hapus Item</h3>
-        <hr>
-        <div class="alert alert-danger">
-          <h4>Apa kamu yakin ingin menghapus item ini?</h4>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white">
+          <h4 class="mb-0 text-center">Konfirmasi Hapus</h4>
         </div>
-        <form action="{% url 'dashboard:dashboard_product_delete' produk.pk %}" method="post">
-          {% csrf_token %}
-          <input class="btn btn-danger" type="submit" value="Yakin">
-          <a href="{% url 'dashboard:dashboard_product' %}">
-            <input class="btn btn-success" type="button" value="Tidak">
-          </a>
-        </form>
+        <div class="card-body">
+          <div class="alert alert-warning text-center">
+            <h5 class="mb-0">Apakah kamu yakin ingin menghapus item ini?</h5>
+          </div>
+          <form action="{% url 'dashboard:dashboard_product_delete' produk.pk %}" method="post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i> Hapus
+              </button>
+              <a href="{% url 'dashboard:dashboard_product' %}" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Batal
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
 {% endblock contents %}
-

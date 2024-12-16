@@ -6,31 +6,52 @@
 {% include 'snippets/topside.html' %}
 
 <div class="container">
-<div class="row my-4 justify-content-center">
-  <div class="col-md-4"></div>
-  <div class="col-md-8">
-      <table class="table bg-white">
-          <thead class="bg-primary text-white">
-              <tr>
-                  <th scope="col"></th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Telepon</th>
-              </tr>
-          </thead>
-          <tbody>
-            {% for staff in staffs %}
-              <tr>
-                  <th scope="row"><a class="btn btn-primary btn-sm" href="{% url 'dashboard:dashboard_staff_detail' staff.id %}">View</a></th>
-                  <td>{{staff.username}}</td>
-                  <td>{{staff.email}}</td>
-                  <td>{{staff.profile.telp}}</td>
-              </tr>
-              {% endfor %}
-          </tbody>
-      </table>
-  </div>
+    <div class="row my-4 justify-content-center">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table bg-white">
+                    <thead class="bg-primary text-white text-center">
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telepon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for staff in staffs %}
+                        <tr>
+                            <td class="text-center">
+                                <a class="btn btn-primary btn-sm"
+                                    href="{% url 'dashboard:dashboard_staff_detail' staff.id %}">View</a>
+                            </td>
+                            <td>{{ staff.username }}</td>
+                            <td>{{ staff.email }}</td>
+                            <td>{{ staff.profile.telp }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-{% endblock contents %}
 
+
+<style>
+    table thead th {
+        vertical-align: middle;
+        background: linear-gradient(to right, #007bff, #6c63ff);
+    }
+
+    table tbody td {
+        vertical-align: middle;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+</style>
+{% endblock contents %}

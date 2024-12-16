@@ -1,58 +1,87 @@
 <div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                Information
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-gradient-primary text-white text-center py-3">
+                    <h5 class="mb-0">Information</h5>
+                </div>
+                <div class="card-body">
+                    <marquee behavior="" direction="">
+                        <h3 class="my-4">New Information</h3>
+                    </marquee>
+                </div>
             </div>
-            <div class="card-body">
-                <marquee behavior="" direction="">
-                    <h3 class="my-4">New Information</h3>
-                </marquee>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-gradient-primary text-white text-center py-3">
+                    <h5 class="mb-0">Dashboard Statistics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <a class="text-decoration-none text-dark" href="{% url 'dashboard:dashboard_staff' %}">
+                                <div class="card my-card shadow-sm rounded-3" style="height: 110px;">
+                                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                                        <h4 class="fw-semibold">Staff <i class="fas fa-users"></i></h4>
+                                        <h3 class="fw-bold">{{total_staff}}</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a class="text-decoration-none text-dark" href="{% url 'dashboard:dashboard_product' %}">
+                                <div class="card my-card shadow-sm rounded-3" style="height: 110px;">
+                                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                                        <h4 class="fw-semibold">Products <i class="fas fa-box"></i></h4>
+                                        <h3 class="fw-bold">{{total_product}}</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a class="text-decoration-none text-dark" href="{% url 'dashboard:dashboard_order' %}">
+                                <div class="card my-card shadow-sm rounded-3" style="height: 110px;">
+                                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                                        <h4 class="fw-semibold">Orders <i class="fas fa-shipping-fast"></i></h4>
+                                        <h3 class="fw-bold">{{total_order}}</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                Dashboard Statistics
-            </div>
-            <div class="card-body">
-              <div class="row">
-                  <div class="col-md-4">
-                      <a class="text-decoration-none text-dark" href="{% url 'dashboard:dashboard_staff' %}">
-                          <div class="card my-card shadow" style="height: 110px;">
-                              <div class="card-body text-center">
-                                  <h4>Staff <i class="fas fa-users"></i></h4>
-                                  <h3>{{total_staff}}</h3>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
-                  <div class="col-md-4">
-                      <a class="text-decoration-none text-dark" href="{% url 'dashboard:dashboard_product' %}">
-                          <div class="card my-card shadow" style="height: 110px;">
-                              <div class="card-body text-center">
-                                  <h4>Products <i class="fas fa-box"></i></h4>
-                                  <h3>{{total_product}}</h3>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
-                  <div class="col-md-4">
-                      <a class="text-decoration-none text-dark" href="{% url 'dashboard:dashboard_order' %}">
-                          <div class="card my-card shadow" style="height: 110px;">
-                              <div class="card-body text-center">
-                                  <h4>Orders <i class="fas fa-shipping-fast"></i></h4>
-                                  <h3>{{total_order}}</h3>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
-              </div>
-          </div>
-          
-        </div>
-    </div>
-  </div>
 </div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(to right, #007bff, #6c63ff);
+    }
+
+    .my-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .card-header {
+        border-bottom: 2px solid #dee2e6;
+        font-weight: bold;
+        padding: 4px;
+        text-align: center;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+</style>

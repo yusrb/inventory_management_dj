@@ -1,44 +1,62 @@
-<nav class="navbar navbar-expand-lg bg-primary">
-  <div class="container">
-      <a class="navbar-brand text-white" href="{% url 'dashboard:dashboard_index' %}" style="font-size: 22px;">ByR Inventory</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
+      <!-- Toggler Button -->
+      <button class="navbar-toggler border-0 rounded-circle p-2" type="button" data-bs-toggle="modal" data-bs-target="#navbarModal" aria-label="Toggle navigation">
+        <i class="bx bx-menu fs-4 text-white"></i>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                  <a class="nav-link text-white" href="{% url 'dashboard:dashboard_index' %}">Dashboard <span
-                          class="sr-only">(current)</span></a>
-              </li>
-          </ul>
-
-          {% if request.user.is_authenticated %}
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link text-white" href="{% url 'user_profile' %}">{{request.user}} Profile
-                        <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                <form action="{% url 'user_logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="nav-link text-white" style="background: none; border: none;">Logout</button>
-                    </form>
-                </li>
-            </ul>
-            {% else %}
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link text-white" href="{% url 'user_register' %}">Register
-                        <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="{% url 'user_login' %}">Login
-                      <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-          {% endif %}
+  
+      <!-- Navbar Title -->
+      <span class="navbar-text fw-bold ms-3 text-white" style="font-size: 15px; font-weight:900">
+        Dashboard / <span class="fw-light">Spire</span>
+      </span>
+  
+      <div class="d-flex align-items-center ms-auto">
+        <div id="current-date" class="me-3 p-2 mr-3 bg-light rounded d-flex align-items-center shadow-sm">
+          <span id="current-date-text" class="me-2"></span>
+          <i class="bx bx-calendar text-muted"></i>
+        </div>
+        <form action="{% url 'user_logout' %}" method="post" class="mb-0">
+          {% csrf_token %}
+          <input class="btn btn-info px-3" type="submit" value="Logout">
+        </form>
       </div>
+    </div>
+  </nav>
+  
+  <!-- Modal Navigation -->
+  <div class="modal fade" id="navbarModal" tabindex="-1" aria-labelledby="navbarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content border-0 rounded-3">
+        <div class="modal-header border-bottom-0 bg-light">
+          <h5 class="modal-title fw-bold" id="navbarModalLabel">Navigasi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-3">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item border-0 p-2">
+              <a class="nav-link text-dark fw-semibold" href="#">Produk</a>
+            </li>
+            <li class="list-group-item border-0 p-2">
+              <a class="nav-link text-dark fw-semibold" href="#">Meja</a>
+            </li>
+            <li class="list-group-item border-0 p-2">
+              <a class="nav-link text-dark fw-semibold" href="#">History Transaksi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</nav>
+  
+  <script>
+    const dateElement = document.getElementById('current-date-text');
+    const today = new Date();
+    const dateString = today.toLocaleDateString('id-ID', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    dateElement.innerHTML = dateString;
+  </script>
+  

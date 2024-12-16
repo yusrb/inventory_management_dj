@@ -6,17 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock title %}</title>
 
-    <!-- Bootstrap CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
         integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-    <!-- Custom CSS (If you have custom styles) -->
+    <style>
+      body {
+        background: linear-gradient(to right, #00bcd4, #3f51b5);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: linear-gradient(to right, #00bcd4, #3f51b5);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .card {
+        border: none;
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .card h2 {
+        font-size: 2rem;
+        color: #343a40;
+      }
+
+      .btn-primary {
+        background-color: #17a2b8;
+        border: none;
+        font-size: 1.2rem;
+      }
+
+      .btn-primary:hover {
+        background-color: #138496;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .text-primary {
+        color: #17a2b8;
+      }
+
+      .text-primary:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     {% include 'snippets/nav.html' %}

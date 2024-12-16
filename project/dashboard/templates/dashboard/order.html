@@ -6,33 +6,32 @@
 {% include 'snippets/topside.html' %}
 
 <div class="container">
-  <div class="row my-4">
-      <div class="col-md-4"></div>
-      <div class="ml-auto" style="position:relative; left:80px; width: 820px;">
-          <table class="table bg-white">
-              <thead class="bg-primary text-white">
-                  <tr>
-                      <th scope="col">Produk</th>
-                      <th scope="col">Kategori</th>
-                      <th scope="col">Kuantitas</th>
-                      <th scope="col">Order by</th>
-                      <th scope="col">Date</th>
-                  </tr>
-              </thead>
-              <tbody>
-                {% for pesanan in pesanans  %}
-                  <tr>
-                      <td>{{pesanan.produk}}</td>
-                      <td>{{pesanan.produk.kategori}}</td>
-                      <td>{{pesanan.pemesanan_kuantitas}}</td>
-                      <td>{{pesanan.staff.username}}</td>
-                      <td>{{ pesanan.tgl_pemesanan|date:"d, F Y" }}</td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
-          </table>
-      </div>
-  </div>
+    <div class="row my-4">
+        <div class="col-md-4"></div>
+        <div class="ml-auto" style="position:relative; left:80px; width: 820px;">
+            <table class="table bg-white">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">Produk</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Kuantitas</th>
+                        <th scope="col">Order by</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pesanan in pesanans  %}
+                    <tr>
+                        <td>{{pesanan.produk}}</td>
+                        <td>{{pesanan.produk.kategori}}</td>
+                        <td>{{pesanan.pemesanan_kuantitas}}</td>
+                        <td>{{pesanan.staff.username}}</td>
+                        <td>{{ pesanan.tgl_pemesanan|date:"d, F Y" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock contents %}
-
